@@ -1,0 +1,11 @@
+[Unit]
+Description=MosaicDL backend
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mosaicdl/backend
+ExecStart=env/gunicorn backend.wsgi
+
+[Install]
+WantedBy=multi-user.target

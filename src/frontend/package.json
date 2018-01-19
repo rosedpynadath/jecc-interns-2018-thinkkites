@@ -1,0 +1,46 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "UI from mosaic deep learning work bench",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080 --content-base ./www --watch-content-base --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/maxiqdev/mosaicdl.git"
+  },
+  "keywords": [
+    "mosaicdl"
+  ],
+  "author": "Akhil Lawrence <akhil.lawrence@lntinfotech.com>",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/maxiqdev/mosaicdl#readme",
+  "dependencies": {
+    "bootstrap": "^3.2.0",
+    "jquery": "^3.2.1",
+    "material-ui": "^0.20.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-graph-vis": "^1.0.2",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.0.4",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "jest": "^22.0.4",
+    "react-test-renderer": "^16.2.0",
+    "redux-devtools": "^3.4.1",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.1",
+    "webpack-dev-server": "^2.9.7"
+  }
+}

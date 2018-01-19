@@ -1,0 +1,48 @@
+---
+- hosts: all
+
+  tasks:
+
+  - name: Install nvm
+    shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+
+  - name: Install node.js and npm
+    shell: $HOME/.nvm/nvm.sh && nvm install node
+
+  - name: Install nginx
+    apt: name=nginx state=latest
+
+  - name: Update nginx config file
+    copy:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+    notify:
+      - restart nginx
+
+  - name: Install mysql
+    apt: name=mysql state=latest
+
+  - name: Create mysql user
+    mysql_user:
+      name: mosaicdl
+      password: mosaicdl
+      priv: '*.*:ALL'
+      state: present
+
+  - name: Create mysql database
+    mysql_db:
+      name: mosaicdl
+      state: present
+
+  - name: Copy deployment key
+    copy:
+      src: key
+      dest: $HOME/.ssh/key
+
+  - name: Clone the code base
+    shell: ssh-agent bash -c 'ssh-add $HOME/.ssh/key; git clone git@bitbucket.org:maxiqdev/mosaicdl.git'
+
+  handlers:
+
+    - name: restart nginx
+      service: name=nginx state=restarted
